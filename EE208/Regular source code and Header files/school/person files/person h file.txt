@@ -1,0 +1,23 @@
+#ifndef PERSON_INCL
+#define PERSON_INCL
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Person {
+    private:
+    string name;
+    int age;
+
+    public:
+    Person(); // default constructor
+    Person(string name, int age); // constructor
+    void setName(string name); // setting the persons name
+    string getName(); // getting the persons name
+    void setAge(int age); // setting the persons age
+    int getAge(); // getting the persons age
+    virtual void printDetails(); // printing the persons details
+};
+
+#endif

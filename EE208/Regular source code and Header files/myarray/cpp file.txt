@@ -1,0 +1,64 @@
+#include "myarray.h"
+
+const int MAX = 1000;
+
+myarray::myarray(int num2) // constructor
+{
+    N = num2; // size of array
+    int* dma[N]; // point to array
+}
+myarray::myarray() // default constructor
+{
+    dma = NULL;
+    N = 0;
+}
+void myarray::setvalues(int index)
+{
+    for(int i = 0; i < N; i++)
+    {
+        if(i == index)
+        {
+            srand(time(NULL));
+            dma[i] = rand() % MAX; // creating random values for the dynamic memory allocation of the array
+        }
+    }
+}
+int myarray::getvalues(int index) // function to get the private int
+{
+    for(int i = 0; i < N; i++)
+    {
+        if(i == index)
+        {
+            return dma[i]; // returns the value at i if it equals the index
+        }
+    }
+}
+myarray myarray::operator+(const myarray& temp) // function to return the sum 
+{
+    myarray sum(N + temp.N); // creating the sum
+	return sum;
+}
+void myarray::push(int newvalue) // function to push the values
+{
+    int* temp = new int[N+1]; // increasing the size by 1 so a new value can fit
+	for (int i = 0; i < N; i++)
+    {
+		temp[i] = dma[i];
+	}
+	temp[N] = newvalue;
+	delete[] dma; // deallocating the memory
+	dma = temp; // making temp the new main array
+}
+void myarray::printArray() // function to print the array
+{
+    cout << endl;
+    for (int i = 0; i < N; i++)
+    {
+		cout << dma[i] << endl;
+	}
+}
+myarray::~myarray() // function to deallocate the memory
+{
+    delete[] dma;
+    N = 0;
+}

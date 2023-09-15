@@ -1,0 +1,23 @@
+Create a new class called myarray. This class will behave
+just like an array with some extra functionality. The class should have just
+two private data members: a pointer to an integer, which we will use for
+dynamic memory allocation, and an integer called N.
+
+You should create a constructor that takes in an integer, sets N
+equal to this value, and uses dynamic memory allocation to create memory
+for N integers. You should also create a default contructor that sets the
+pointer = NULL and N = 0. Similarly you should add destructors to you
+class to free up any allocated memory.
+Your class should have functions called void setvalue(int index) and
+int getvalue(int index) that allow you to set and get the value in the array
+at a given index.
+
+You should overload the operator+ such that you can perform the
+following operation in the main function A = B + C; where A, B, and C
+are all objects of type myarray and the values stored in A are given by
+the values stored in B follwed by the values stored in C. Therefore A has
+length equal to the sum of the length of B and the length of C.
+Finally, add a function to your class called void push(int newvalue);
+This function should take in a new value and add it to the end of your
+array. This is a little tricier than you might think as you will have to grow
+the size of your array somehow to N+1.

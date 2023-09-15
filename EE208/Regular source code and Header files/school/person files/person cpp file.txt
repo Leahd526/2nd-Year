@@ -1,0 +1,43 @@
+#include "person.h"
+#include <iostream>
+
+Person::Person() // default constructor
+{
+    cout << "Please enter the person's name: ";
+    cin >> name;
+    cout << "\nPlease enter the person's age: ";
+    cin >> age;
+}
+
+Person::Person(string n, int a) // constructor
+{ 
+    name = n;
+    age = a;
+}
+
+void Person::setName(string n) // setting the persons name
+{
+    name = n;
+}
+
+string Person::getName() // getting the persons name
+{
+    return name;
+}
+
+void Person::setAge(int a) // setting the persons age
+{
+    age = a;
+}
+
+int Person::getAge() // getting the persons age
+{
+    return age;
+}
+
+void Person::printDetails() // printing the persons details
+{
+    cout << endl;
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+}

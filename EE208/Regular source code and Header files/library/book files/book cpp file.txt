@@ -1,0 +1,23 @@
+#include "book.h" // including the Circuit.h file
+
+Book::Book(string t, string a, string p, int y) // constructor
+{
+    title = t;
+    author = a;
+    publisher = p;
+    year = y;
+}
+void Book::set_values(string t, string a, string p, int y) // public member function to set the value of the resistance
+{
+    title = t;
+    author = a;
+    publisher = p;
+    year = y;
+}
+Book::Book() // default constructor
+{
+    title = "";
+    author = "";
+    publisher = "";
+    year = 0;
+}

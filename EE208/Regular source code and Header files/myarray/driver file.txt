@@ -1,0 +1,40 @@
+#include "myarray.h"
+#include <cstdlib> // library for rand
+#include <ctime> // library for time
+
+int main()
+{
+    myarray A(10); // setting the values of N using the constructor
+    myarray B(20);
+
+    int index;
+    int newvalue;
+
+    for (int i = 0; i < 10; i++)
+    {
+        A.setvalues(i); // for loop to set the values
+    }
+    for (int i = 0; i < 20; i++)
+    {
+        B.setvalues(i); // for loop to set the values
+    }
+
+    cout << "The First Array is: ";
+    A.printArray(); // printing out the first array
+    cout << "\nThe Second Array is: ";
+    B.printArray(); // printing out the second array
+
+    myarray C = A.operator+(B); // calling the operator function
+    C.printArray(); // printing out the third array
+
+    cout << "\nPlease enter an index: "; // asking user to enter an index in the array they wish to find
+    cin >> index;
+    cout << C.getvalues(index); // calling the getvalues function to get what value is in the index
+
+    cout << "\nPlease enter a value: "; // asking user to enter a new value to place into the array
+    cin >> newvalue;
+    C.push(newvalue); // calling the push function
+    C.printArray(); // printing out the new array
+
+    return 0;
+}

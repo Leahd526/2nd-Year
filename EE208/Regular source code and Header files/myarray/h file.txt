@@ -1,0 +1,23 @@
+#ifndef MYARRAY_INCL
+#define MYARRAY_INCL
+
+#include <iostream>
+
+using namespace std;
+
+class myarray{
+    int* dma; // pointer to array for dynamic memory
+    int N; // size of array
+
+    public:
+    myarray(int num2); // constructor
+    myarray(); // default constructor
+    void setvalues(int index); // function to set values
+    int getvalues(int index); // function to get values
+    myarray operator+(const myarray& temp); // operator function to get the sum of the arrays
+    void push(int newvalue); // function to push a new value onto the array
+    void printArray(); // function to print the array
+    ~myarray(); // destructor
+};
+
+#endif

@@ -1,0 +1,58 @@
+/*** PART ONE ***/
+Make a class called Resistor describing a resistor with the
+following members:
+
+a private data member for the resistance, R
+a public member function to set the value of R
+a public member function to calculate the current I from the voltage V
+a public member function to calculate the voltage V from the current I
+a public member function to calculate the power dissipation P from the current
+I using the formula P = I·V, where V is calculated using the previous member
+function.
+add a constructor to set the value of R when it is defined.
+now add a default contructor.
+
+Make a program to test this class called driver.cpp that creates two
+resistors called A and B. The first resistor should have its value set using the
+constructor while the second is declared using the default constructor and
+has it’s value set using the set value function you defined. You should then
+print out all related information for the resisitors (you might need to add
+another member function to help). Your class declaration should be stored
+in a file called resistor.h and the class definition should be stored in a file
+called resistor.cpp.
+
+Finally, expand on your previous code as follows: adapt
+driver.cpp to request a user to enter an integer N and then dynamically
+allocates an array of type Resistor of size N. You should then use a for loop
+to assign random values (doubles) between 0 and 1000 to these N resistors.
+
+
+/***PART TWO***/
+
+Take your solution from the first exercise and add a static member
+int variable called n that allows you to count the number of resistor objects
+that are active in the main function. Make sure to give n an initial value of 0
+and to increment n by 1 in both of your constructors. You will also need to
+add a destructor that subtracts 1 from n. Test to see if your counter works
+by prinitng the value of n. Following this, delete your array (from the first
+exercise) and again print out the value of n. Finally, declare two resistors A
+and B and give them some values. Then, create a friend function called series
+that takes in two resistor objetcs and returns a resistor object. The R value of
+the returned resistor should be equal to sum of the R values of the two input
+resistors. Demonstrate that this function works in your main function. How
+might you replace this friend functon with a method in your resistor class?
+
+
+/***PART THREE***/
+
+Create a new class called circuit. This class should contain
+a private member, which is an array of (or more accurately a pointer to) N
+resistors. The ciruit class should have a constructor that has one input, an int
+N, and which dynamically allocates memory for the N resistors and gives them
+defualt values between 0 and 1000. The class should also have an appropriate
+default contructor and a destructor. In your main function (in driver.cpp)
+ask the user to input an int N and use this to creata a circuit object. Print the
+value of n (the static member variable) to confirm that the appropriate number
+of resisors have been created. The circuit class declaration should be stored
+in a file called circuit.h and the class definition should be stored in a file
+called circuit.cpp

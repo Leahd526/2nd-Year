@@ -1,0 +1,12 @@
+#include <iostream>
+#include "book.h"
+using namespace std;
+
+class library_book: public Book{
+    bool on_loan; // variable to check if the book is available or not
+
+    public:
+    library_book(); // constructor
+    bool check_in(); // function to check in the book
+    bool check_out(); // function to check out the book
+};

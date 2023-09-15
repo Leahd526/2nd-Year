@@ -1,0 +1,41 @@
+#include "employee.h"
+#include <iostream>
+
+Employee::Employee() // default constructor
+{
+    employee_num = 0;
+    department = "";
+}
+
+Employee::Employee(string n,int a,int num_em,string d) : Person(n, a) // constructor
+{
+    employee_num = num_em;
+    department = d;
+}
+
+void Employee::setEmployeeNum(int num_em) // setting the employees number
+{
+    employee_num = num_em;
+}
+
+int Employee::getEmployeeNum() // getting the employees number
+{
+    return employee_num;
+}
+
+void Employee::setDepartment(string d) // setting the employees department
+{
+    department = d;
+}
+
+string Employee::getDepartment() // getting the employees department
+{
+    return department;
+}
+
+void Employee::printDetails() // printing the employees details
+{
+    Person::printDetails(); // calling the persons details first
+    cout << "Employee ID: " << employee_num << endl;
+    cout << "Department: " << department << endl;
+}

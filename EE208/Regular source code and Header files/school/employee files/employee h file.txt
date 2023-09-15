@@ -1,0 +1,21 @@
+#ifndef EMPLOYEE_INCL
+#define EMPLOYEE_INCL
+
+#include "person.h"
+
+class Employee : public Person {
+    private:
+    int employee_num;
+    string department;
+    
+    public:
+    Employee(); // default constructor
+    Employee(string n,int a,int num_em,string d); // constructor
+    void setEmployeeNum(int num_em); // setting employees number
+    int getEmployeeNum(); // getting employees number
+    void setDepartment(string d); // setting employees department
+    string getDepartment(); // getting employees department
+    void printDetails(); // printing their details
+};
+
+#endif

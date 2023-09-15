@@ -1,0 +1,36 @@
+#include "Book_details.h"
+
+Book_details::Book_details() { // default constructor
+  Title = "Null";
+  Author = "Null";
+  Publisher = "Null";
+  Edition = 0;
+  Barcode = 0;
+  num_copies = 0;
+}
+Book_details::Book_details(string A, string B, string C, int D, int E , int NC) {
+  Title = A; // constructor to set each of the variables
+  Author = B;
+  Publisher = C;
+  Edition = D;
+  Barcode = E;
+  num_copies = NC;
+}
+void Book_details::set_details(string A, string B, string C, int D, int E, int NC) {
+  Title = A; // setting each of the variables
+  Author = B;
+  Publisher = C;
+  Edition = D;
+  Barcode = E;
+  num_copies = NC;
+}
+void Book_details::print_details(void) { // printing out each of the variables
+  cout << "Title: " << Title << endl;
+  cout << "Author: " << Author << endl;
+  cout << "Publisher: " << Publisher << endl;
+  cout << "Edition: " << Edition << endl;
+  cout << "Barcode: " << Barcode << endl;
+  cout << "Number of copies: " << num_copies << endl;
+}
+void Book_details::Add(int N) { num_copies = num_copies + N; } // add to number of copies
+void Book_details::Subtract(int N) { num_copies = num_copies - N; } // subtract to number of copies

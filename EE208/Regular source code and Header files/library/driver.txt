@@ -1,0 +1,28 @@
+#include "library_book.h"
+
+int main()
+{
+    string t;
+    string a;
+    string p;
+    int y;
+
+
+    cout << "Please input the name of the book "; // allowing user to input a book
+    cin >> t;
+    cout << "\nPlease input the author of the book ";
+    cin >> a;
+    cout << "\nPlease input the publisher of the book ";
+    cin >> p;
+    cout << "\nPlease input the year of publication ";
+    cin >> y;
+
+    library_book b2; // creating a second book object
+    b2.set_values(t,a,p,y); // setting its values
+
+    b2.check_out();
+    cout << "\nThe book is now checked out";
+
+    b2.check_in();
+    cout << "\nThe book is now checked in";
+}

@@ -1,0 +1,31 @@
+#include "Circuit.h" // including the Circuit.h file
+
+const int MAX = 1000;
+//int Circuit::n=0; // declaring the count
+Circuit::Circuit(int N) // constructor
+{
+    srand(time(NULL)); // random function
+    for(int i = 0; i < N; i++)
+    {
+        r[i] = (double)rand() / 1000; // setting random values for the resistors
+    }
+    n++; // count
+}
+void Circuit::set_values(int num) // public member function to set the value of the resistance
+{
+    *N = num;
+}
+Circuit::Circuit() // default constructor
+{
+    N = 0;
+    n++; // count
+}
+int Circuit::getCount() // function to get the count
+{
+    return n; // returns the count
+}
+Circuit::~Circuit() // destructor
+{
+    delete N;
+    n--; // count
+}

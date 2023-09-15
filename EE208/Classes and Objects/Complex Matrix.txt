@@ -1,0 +1,108 @@
+/***Create a new class called OneD Complex matrix.
+This class should contain two private data members, a pointer to type Complex
+and an integer N. You should create a constructor with the following
+prototype:
+
+OneD Complex matrix(int N)
+
+This constructor should take in a single paramater and use this to
+dynamically allocate memory for a 1D matrix of Complex numbers, it
+should then set all of the real values and imaginary values to be zero.
+Create a public method to set the values to random values and create
+a second public method to convert the matrix into its conjugate. The
+function prototypes should look like:
+
+void set random values()
+void conjugate()
+
+Demonstrate objects of your new class in action in the main function.
+Finally you should add a destructor to delete the allocated memory. ***/
+
+/**********************/
+/**********************/
+/**********************/
+
+#include <iostream>
+#include <cstdlib> // library for rand
+#include <ctime> // library for time
+
+using namespace std;
+
+const int MAX = 1000;
+
+struct Complex{ // struct for the complex number
+    double REAL;
+    double IMAG;
+};
+class OneD_Complex_matrix{
+    Complex* c1;
+    int N;
+
+    public:
+    OneD_Complex_matrix(int N) : N(N) // function to create the 1D matrix
+    {
+        c1 = new Complex[N];
+        for(int i = 0; i < N; i++) // setting each of the variables to 0
+        {
+            c1[i].REAL = 0;
+            c1[i].IMAG = 0;
+        }
+    }
+    void set_random_values() // randomly sets the values of the real and imaginary parts of the complex number
+    {
+        srand(time(NULL)); // random function
+        for(int i = 0; i < N; i++)
+        {
+            c1[i].REAL = (double)rand() / MAX; // creating random values for the real part of the complex number
+            c1[i].IMAG = (double)rand() / MAX; // creating random values for the imaginary part of the complex number
+        }
+    }
+    void conjugate() // function to find the conjugate
+    {
+        cout << "The Complex Conjugated Matrix is: " << endl;
+        for(int i = 0; i < N; i++)
+        {
+            c1[i].REAL = c1[i].REAL;
+            c1[i].IMAG = (c1[i].IMAG * -1); // calculating the conjugate
+            if(c1[i].IMAG > 0)
+            {
+                cout << c1[i].REAL << "+" << c1[i].IMAG << "i" << endl;
+            }
+            else
+            {
+                cout << c1[i].REAL << c1[i].IMAG << "i" << endl;
+            }
+        }
+    }
+    Complex* getComplex() // function to get the private values of the complex number
+    {
+        return c1;
+    }
+    ~OneD_Complex_matrix() //function to deallocate the memory
+    {
+        delete[] c1;
+    }
+};
+
+int main()
+{
+    OneD_Complex_matrix m1(4); // creating a complex matrix
+    m1.set_random_values(); // function to set random values
+
+    cout << "The Matrix is: " << endl;
+    for(int i = 0; i < 4; i++) // for loop to print out the original matrix
+    {
+        if(m1.getComplex()[i].IMAG > 0)
+        {
+            cout << m1.getComplex()[i].REAL << "+" << m1.getComplex()[i].IMAG << "i" << endl;
+        }
+        else
+        {
+            cout << m1.getComplex()[i].REAL << m1.getComplex()[i].IMAG << "i" << endl;
+        }
+    }
+    m1.conjugate(); // calling the conjugate function to print out the complex conjugate of the matrix
+
+    m1.~OneD_Complex_matrix(); // deallocating the memory
+    return 0;
+}

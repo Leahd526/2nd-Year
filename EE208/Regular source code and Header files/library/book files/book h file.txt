@@ -1,0 +1,21 @@
+#ifndef BOOK_INCL
+#define BOOK_INCL
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Book{
+    protected:
+    string title;
+    string author;
+    string publisher;
+    int year;
+
+    public:
+    Book(string title, string author, string publisher, int year); // constructor
+    void set_values(string t, string a, string p, int y); // public member function to set the values
+    Book(); // default constructor
+};
+
+#endif

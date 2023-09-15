@@ -1,0 +1,14 @@
+Create a class for a book that contains information about the title,
+author, publisher, and year of publication. The class should have a constuctor
+that allows you to create an object while entering all of these values. It should
+also have a set values function that allows you to enter these values. Create a
+new class that inherits from this class publicly, called library book. This new
+class should have a variable of type bool called on loan, which indicates whether
+the book is on loan. It should also have two new function called check in and
+check out which change the value of on loan appropriately. This new class
+should have a new constructor that creates a default value for on loan as well
+as retaining the functionality of the constructor of book. Demonstrate the use
+of the library book class in a main function. Your files should be stored in
+book.h,book.cpp,library .book.h, library .book.cpp and driver.cpp where your
+main function is locaated. For good housekeeping, put all of these files in a
+single folder.

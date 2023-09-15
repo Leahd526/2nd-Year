@@ -1,0 +1,5 @@
+Write two derived classes inheriting functionality of a base class
+called person (should have a constructor member function that asks the user to
+enter name and age) and with added unique features of student, and employee,
+and functionality to assign, change, and delete, records of student and employee.
+What these unique features are is up to you.

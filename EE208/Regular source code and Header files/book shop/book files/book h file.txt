@@ -1,0 +1,25 @@
+#pragma once
+#include "Book_details.h"
+
+class Book : public Book_details {
+public:
+  Book_details *details;
+  float Price;
+
+  Book(); // default constructor
+  Book(string, string, string, int, int, float, int); // constructor
+  void Book_set_details(string, string, string, int, int, float, int); // setting book details
+  void Book_print(void); // printing book details
+};
+
+class Hardback : public Book {
+public:
+  Hardback(); // hardback default constructor
+  Hardback(string, string, string, int, int, float, int); // hardback constructor
+};
+
+class Softback : public Book {
+public:
+  Softback(); // softback default constructor
+  Softback(string, string, string, int, int, float, int); // softback constructor
+};

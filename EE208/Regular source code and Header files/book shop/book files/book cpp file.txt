@@ -1,0 +1,25 @@
+#include "Book.h"
+
+Book::Book() { // default constructor
+  details = new Book_details; // setting details to equal a new Book_details variable
+  Price = 0.0; // setting the default price value
+}
+Book::Book(string A, string B, string C, int D, int E, float F, int G) {
+  details = new Book_details;
+  details->set_details(A, B, C, D, E, G); // setting the values
+  Price = F; // setting price
+}
+void Book::Book_set_details(string A, string B, string C, int D, int E, float F, int G) {
+  details->set_details(A, B, C, D, E, G); // setting the values
+  Price = F; // setting price
+}
+void Book::Book_print() { // printing out the book details
+  details->print_details(); // taking the print_details function from Book_details
+  cout << "Price: " << Price << endl; // printing out the price
+}
+
+Hardback::Hardback(){}; // default constructor for hardback
+Hardback::Hardback(string A, string B, string C, int D, int E, float F, int G) : Book(A, B, C, D, E, F, G){}; // constructor for hardback
+
+Softback::Softback(){}; // default constructor for softback
+Softback::Softback(string A, string B, string C, int D, int E, float F, int G) : Book(A, B, C, D, E, F, G){}; // constructor for softback

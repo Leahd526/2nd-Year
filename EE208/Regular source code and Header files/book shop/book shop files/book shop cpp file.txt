@@ -1,0 +1,70 @@
+#include "Book_shop.h"
+#include "Warehouse.h"
+
+Book_shop::Book_shop() {} // default constructor
+
+Book_shop::Book_shop(Warehouse W) {
+  // This consturctor sets up a database of books for the book shop that is the
+  // same as the one for the warehouse except the number of copies are all set =
+  // 0
+  num_hards = W.num_hards; // number of hardbacks is equal to the number of hardbacks in the warehouse
+  num_softs = W.num_softs; // number of softbacks in equal to the number of softbacks in the warehouse
+
+  string A, B, C; // A = title, B = Author, C = publisher
+  int D, E; // D = edition, E = barcode
+  float F; // F = price
+  Hardbacks = new Hardback[W.num_hards]; // creating an array of hardbacks using the number of hardbacks in the warehouse
+  for (int i = 0; i < W.num_hards; i++) {
+    A = W.Hardbacks[i].details->Title; // equalling the values to the details found in the warehouse
+    B = W.Hardbacks[i].details->Author;
+    C = W.Hardbacks[i].details->Publisher;
+    D = W.Hardbacks[i].details->Edition;
+    E = W.Hardbacks[i].details->Barcode;
+    F = W.Hardbacks[i].Price;
+    Hardbacks[i].Book_set_details(A, B, C, D, E, F,0); // set num copies equal to zero (we dont copy this value from warehouse)
+  }
+
+  Softbacks = new Softback[W.num_softs]; // creating an array of hardbacks using the number of hardbacks in the warehouse
+  for (int i = 0; i < W.num_softs; i++) {
+    A = W.Softbacks[i].details->Title; // equalling the values to the details found in the warehouse
+    B = W.Softbacks[i].details->Author;
+    C = W.Softbacks[i].details->Publisher;
+    D = W.Softbacks[i].details->Edition;
+    E = W.Softbacks[i].details->Barcode;
+    F = W.Softbacks[i].Price;
+    Softbacks[i].Book_set_details(A, B, C, D, E, F,0); // set num copies equal to zero (we dont copy this value from warehouse)
+  }
+}
+
+void Book_shop::sell(int barcode, int amount) {
+  // Searches for the hardback/softback book with the barcode and subtracts copies by amount
+  // short answer - search for unique barcode and deduct amount by one
+  int i = 0;
+  bool found = false;
+  while ((i < num_hards) && (found == false)) {
+    if (Hardbacks[i].details->Barcode == barcode) { // if the barcode at i equals the inputted number
+      if (Hardbacks[i].details->num_copies > 0) { // if the number of copies is greater than 0
+        Hardbacks[i].details->num_copies -= amount; // minus the amount of copies
+      } else {
+        cout << endl << "Out of stock." << endl; // if the number of copie is 0
+      }
+      found = true;
+    }
+    i++;
+  }
+  i = 0;
+  while ((i < num_softs) && (found == false)) {
+    if (Softbacks[i].details->Barcode == barcode) { // if the barcode at i equals the inputted number
+      if (Softbacks[i].details->num_copies > 0) { //if the number of copies is greater than 0
+        Softbacks[i].details->num_copies -= amount; // minus the amount of copies
+      } else {
+        cout << endl << "Out of stock." << endl; // if the number of copie is 0
+      }
+      found = true;
+    }
+    i++;
+  }
+  if (found == false) { // if the book is never found
+    cout << endl << "No such book in database";
+  }
+}

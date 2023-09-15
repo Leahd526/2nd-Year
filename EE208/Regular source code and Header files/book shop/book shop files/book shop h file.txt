@@ -1,0 +1,9 @@
+#pragma once
+#include "Warehouse.h"
+
+class Book_shop : public Warehouse {
+public:
+  Book_shop(); // default constructor
+  Book_shop(Warehouse); // constructor taking from Warehouse
+  void sell(int, int); // search for unique barcode and deduct amount by one
+};

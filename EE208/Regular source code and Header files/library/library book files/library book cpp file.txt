@@ -1,0 +1,17 @@
+#include "library_book.h"
+#include "book.h"
+
+library_book::library_book() // default constructor
+{
+    on_loan = false;
+}
+bool library_book::check_in() // function changes on loan to false when book is checked in
+{
+    on_loan = false;
+    return on_loan;
+}
+bool library_book::check_out() // function changes on loan to true when book is not available
+{
+    on_loan = true;
+    return on_loan;
+}

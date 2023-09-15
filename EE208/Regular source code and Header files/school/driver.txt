@@ -1,0 +1,36 @@
+#include "person.h"
+#include "student.h"
+#include "employee.h"
+#include <iostream>
+
+int main() {
+    
+    Person person1; // Create a Person object
+    cout << "Person details:";
+    person1.printDetails(); // printing the persons details
+    cout << endl;
+    
+    Student student("Nicole", 18, 21335); // Create a Student object
+    Person person2;
+    cout << "Student details:";
+    student.printDetails();  // printing the students details
+    cout << endl;
+    
+    Employee employee("Sarah", 19, 21300, "Engineering"); // Create an Employee object
+    cout << "Employee details:";
+    employee.printDetails(); // printing the employees details
+    cout << endl;
+    
+    student.setAge(19); // update students age
+    student.setStudentNum(21336); // update students number
+    cout << "Updated student details:"; 
+    student.printDetails(); //printing out the new details
+    cout << endl;
+    
+    employee.setEmployeeNum(5656); // updating employees number
+    employee.setDepartment("Maths"); // updating their department
+    cout << "Updated employee details:";
+    employee.printDetails(); //printing out the new details
+    
+    return 0;
+}

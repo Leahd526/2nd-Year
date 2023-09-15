@@ -1,0 +1,22 @@
+#ifndef CIRCUIT_INCL
+#define CIRCUIT_INCL
+
+#include <iostream>
+#include "Resistor.h" // including the Resistor.cpp file
+
+using namespace std;
+
+class Circuit{
+    int* N;
+    Resistor* r;
+    static inline int n = 0;
+
+    public:
+    Circuit(int N); // constructor
+    Circuit(); // default constructor
+    void set_values(int num); // public member function to set the value of the resistors
+    static int getCount(); // function to get the count
+    ~Circuit(); // destructor
+};
+
+#endif

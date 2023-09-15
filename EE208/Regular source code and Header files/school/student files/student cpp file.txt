@@ -1,0 +1,28 @@
+#include "student.h"
+#include <iostream>
+
+Student::Student() // default constructor
+{
+    student_num = 0;
+}
+
+Student::Student(string n, int a, int num) : Person(n, a) // constructor
+{
+    student_num = num;
+}
+
+void Student::setStudentNum(int num) // setting the students number
+{
+    student_num = num;
+}
+
+int Student::getStudentNum() // getting the students number
+{
+    return student_num;
+}
+
+void Student::printDetails() // printing the students details
+{
+    Person::printDetails();
+    cout << "Student Number: " << student_num << endl;
+}

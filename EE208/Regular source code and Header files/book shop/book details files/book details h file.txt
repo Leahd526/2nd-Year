@@ -1,0 +1,26 @@
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Pub_details { // publisher details
+public:
+  string Title;
+  int num_copies;
+};
+
+class Book_details : public Pub_details {
+public:
+  string Author;
+
+  string Publisher;
+  int Edition;
+  int Barcode;
+
+  Book_details(); // default constructor
+  Book_details(string, string, string, int, int, int); // constructor
+  void set_details(string, string, string, int, int, int); // set details
+  void print_details(void); // print the details
+  void Add(int N); // add the number of copies
+  void Subtract(int N); // subtract the number of copies
+};

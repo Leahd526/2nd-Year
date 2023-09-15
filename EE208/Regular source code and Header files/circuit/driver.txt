@@ -1,0 +1,81 @@
+#include "Circuit.h" // including the Circuit.cpp file
+#include <cstdlib> // library for rand
+#include <ctime> // library for time
+
+int main()
+{
+    /**Setting value of resistor A using the constructor and setting value of resistor B using default constructor**/
+    Resistor A(100);
+    Resistor B;
+    B.set_values(200);
+
+    float I1 = A.calcCurrent(5);
+    float I2 = A.calcCurrent(10);
+
+    /**Printing out all the related information for the resistors*/
+    cout << "Resistance: " << A.getResistance();
+    cout << "\nThe current for resistor A is (V=5): " << I1;
+    cout << "\nThe voltage for resistor A is (I=" << I1 << "): " << A.calcVoltage(I1);
+    cout << "\nThe power for resistor A is (I=" << I1 << "): " << A.calcPower(I1);
+    cout << endl;
+    cout << "\nResistance: " << B.getResistance();
+    cout << "\nThe current for resistor B is (V=10): " << I2;
+    cout << "\nThe voltage for resistor B is (I=" << I2 << "): " << B.calcVoltage(I2);
+    cout << "\nThe power for resistor B is (I=" << I2 << "): " << B.calcPower(I2) << endl;
+
+    /**Expanding code to request a user to enter an integer*/
+    int N;
+    cout << "Please input an integer: ";
+    cin >> N;
+
+    /**Dynamically allocating an array*/
+    Resistor *res = new Resistor[N];
+
+    srand(time(NULL)); // random function
+    for(int i = 0; i < N; i++)
+    {
+        double r = rand() % 1000 + 1; // random value for resistance between 1 and 1000
+        res[i].set_values(r); // setting the values for the resistors
+    }
+
+    /**Printing out all the related information for the resistors*/
+    for(int i = 0; i < N; i++)
+    {
+        cout << "\nResistor " << i+1 << ": " << res[i].getResistance();
+        float I3 = res[i].calcCurrent(5);
+        cout << "\nCurrent (V=5): " << I3;
+        cout << "\nVoltage (I=" << I3 << "): " << res[i].calcVoltage(I3);
+        cout << "\nPower (I=" << I3 << "): " << res[i].calcPower(I3);
+        cout << endl;
+    }
+
+    /**Printing the count*/
+    cout << "\nThe number of resistor objects is: " << Resistor::getCount();
+
+    delete[] res; // dynamical memory deallocation
+
+    /**Reprint the count*/
+    cout << "\nThe number of resistor objects is: " << Resistor::getCount();
+
+    /**Declaring two resistors and calling the friend function on them*/
+    Resistor A2(100);
+    Resistor B2(200);
+    series(A2,B2);
+
+    /**Asking user to input an integer and printing the count*/
+    int N2;
+    cout << "Please input an integer: ";
+    cin >> N2;
+
+    /*Creating circuit objects*/
+    Circuit c[N2];
+    for(int i = 0; i < N2; i ++)
+    {
+        c[i] = Circuit();
+    }
+
+    cout << endl;
+    cout << "The number of circuit objects is: " << Circuit::getCount() << endl; // printing the count
+    
+    return 0;
+}

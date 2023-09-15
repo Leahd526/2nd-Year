@@ -1,0 +1,18 @@
+#ifndef STUDENT_INCL
+#define STUDENT_INCL
+
+#include "person.h"
+
+class Student : public Person {
+    private:
+    int student_num;
+
+    public:
+    Student(); // default constructor
+    Student(string n, int a,int num); // constructor
+    void setStudentNum(int num); // setting the students number
+    int getStudentNum(); // getting the students number
+    void printDetails(); // printing the students details
+};
+
+#endif

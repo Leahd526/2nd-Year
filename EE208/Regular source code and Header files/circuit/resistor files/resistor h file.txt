@@ -1,0 +1,26 @@
+#ifndef RESIST_INCL
+#define RESIST_INCL
+
+
+#include <iostream>
+
+using namespace std;
+
+class Resistor{
+    float* R;
+    static inline int n = 0;
+
+    public:
+    Resistor(float r); // constructor
+    Resistor(); // default constructor
+    void set_values(float r); // public member function to set the value of the resistance
+    float calcCurrent(float V); //function to calculate the current
+    float calcVoltage(float I); // function to calculate the voltage
+    float calcPower(float I); // function to calculate the power
+    float getResistance(); // function to get the resistance
+    static int getCount(); // function to calculate the count
+    friend void series(Resistor A, Resistor B); // friend function
+    ~Resistor(); // destructor
+};
+
+#endif

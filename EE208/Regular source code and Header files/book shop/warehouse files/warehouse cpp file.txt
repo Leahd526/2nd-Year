@@ -1,0 +1,142 @@
+#include "Warehouse.h"
+#include "Book_shop.h"
+
+Warehouse::Warehouse() { // default constructor
+  Hardbacks = NULL;
+  Softbacks = NULL;
+}
+
+Warehouse::Warehouse(int Num_soft, int Num_hard) {
+  num_hards = Num_hard; // declaring number of hardbacks
+  num_softs = Num_soft; // declaring number of softbacks
+
+  string A, B, C; // A = title, B = author, C = publisher
+  int D, E, G; // D = edition, E = barcode, G = number of copies
+  float F; // F = price
+  Hardbacks = new Hardback[Num_hard]; // array to store all of the hardbacks in the warehouse
+  if (Num_hard > 0) // if there are hardbacks promt user to enter the details of the hardbacks
+  {
+    cout << "Please enter details of all " << Num_hard << " hardback books in the warehouse:" << endl;
+  }
+  for (int i = 0; i < Num_hard; i++)
+  {
+    cout << "\nFor Book " << i + 1 << endl;
+    cout << "\nPlease enter title: " << endl;
+    cin >> A;
+    cout << "\nPlease enter author: " << endl;
+    cin >> B;
+    cout << "\nPlease enter publisher: " << endl;
+    cin >> C;
+    cout << "\nPlease enter edition: " << endl;
+    cin >> D;
+    cout << "\nPlease enter barcode: " << endl;
+    cin >> E;
+    cout << "\nPlease enter price: " << endl;
+    cin >> F;
+    cout << "\nPlease enter number of copies: " << endl;
+    cin >> G;
+    Hardbacks[i].Book_set_details(A, B, C, D, E, F, G); // setting the details inputted by user
+  }
+
+  Softbacks = new Softback[Num_soft]; // array to store all of the softbacks in the warehouse
+  if (Num_soft > 0) // if there are softbacks promt user to enter the details of the softbacks
+  {
+    cout << "\nPlease enter details of all " << Num_soft << " softback books in the warehouse: " << endl;
+  }
+  for (int i = 0; i < Num_soft; i++)
+  {
+    cout << "\nFor Book " << i + 1 << endl;
+    cout << "\nPlease enter title: " << endl;
+    cin >> A;
+    cout << "\nPlease enter author: " << endl;
+    cin >> B;
+    cout << "\nPlease enter publisher: " << endl;
+    cin >> C;
+    cout << "\nPlease enter edition: " << endl;
+    cin >> D;
+    cout << "\nPlease enter barcode: " << endl;
+    cin >> E;
+    cout << "\nPlease enter price: " << endl;
+    cin >> F;
+    cout << "\nPlease enter number of copies: " << endl;
+    cin >> G;
+    Softbacks[i].Book_set_details(A, B, C, D, E, F, G); // setting the details inputted by user
+  }
+}
+
+void Warehouse::print_all_books() { // function to print all the books in the warehouse
+  cout << "\nLIST OF HARDBACKS: " << endl;
+  for (int i = 0; i < num_hards; i++)
+  {
+    Hardbacks[i].Book_print(); // calling Book_print function from Book.h
+    cout << endl;
+  }
+  cout << "\nLIST OF SOFTBACKS: " << endl;
+  for (int j = 0; j < num_softs; j++)
+  {
+    Softbacks[j].Book_print(); // calling Book_print function from Book.h
+    cout << endl;
+  }
+}
+
+void Warehouse::transfer(Book_shop &A, int bar, int amount) {
+  // search for unique barcode in both the warehouse and bookshop databases and
+  // transfer number of copies
+  int i = 0;
+  bool found = false; // value to determine if the barcode exists
+  while ((i < num_hards) && (found == false)) {
+    if (Hardbacks[i].details->Barcode == bar) // if the barcode at i equals the inputted number
+    {
+      for (int j = 0; j < A.num_hards; j++)
+      {
+        if (A.Hardbacks[i].details->Barcode == bar) // if the barcode from the bookshop at i equals the inputted number 
+        {
+          while (amount < 0) // if the number of transfers desired is less than 0
+          {
+            cout << "\nnegative transfer not allowed. Reenter amount to transfer: " << endl;
+            cin >> amount;
+          }
+          if (Hardbacks[i].details->num_copies >= amount) // if the number of transfers desired is greater than the number of copies
+          {
+            Hardbacks[i].details->num_copies -= amount; // take away the amount desired from the number of copies
+            A.Hardbacks[i].details->num_copies += amount; // add the ammount to the number of copies in the bookshop
+          } else {
+            cout << endl << "not enough stock to transfer." << endl;
+          }
+        }
+      }
+      found = true; // change the bool variable
+    }
+    i++;
+  }
+  i = 0; // reset count
+  while ((i < num_softs) && (found == false)) {
+    if (Softbacks[i].details->Barcode == bar) // if the barcode at i equals the inputted number
+    {
+      for (int j = 0; j < A.num_softs; j++)
+      {
+        if (A.Softbacks[i].details->Barcode == bar) // if the barcode from the bookshop at i equals the inputted number 
+        {
+          while (amount < 0) // if the number of transfers desired is less than 0
+          {
+            cout << "\nnegative transfer not allowed. Reenter amount to transfer: " << endl;
+            cin >> amount;
+          }
+          if (Softbacks[i].details->num_copies >= amount) // if the number of transfers desired is greater than the number of copies
+          {
+            Softbacks[i].details->num_copies -= amount; // take away the amount desired from the number of copies
+            A.Softbacks[i].details->num_copies += amount; // add the ammount to the number of copies in the bookshop
+          } else {
+            cout << "\nnot enough stock to transfer." << endl;
+          }
+        }
+      }
+      found = true; // change the bool variable
+    }
+    i++;
+  }
+  if (found == false) // if the bool variable still equals false no book exists
+  {
+    cout << "\nNo such book exists in the warehouse.";
+  }
+}

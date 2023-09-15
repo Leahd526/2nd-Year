@@ -1,0 +1,21 @@
+#pragma once
+#include "Book.h"
+#include "Book_details.h"
+
+class Book_shop; // we use it in Warehouse before we define it..need declaration.
+
+class Warehouse : public Book_details {
+public:
+  Hardback *Hardbacks;
+  Softback *Softbacks;
+  int num_hards;
+  int num_softs;
+
+  Warehouse(); // default constructor
+  Warehouse(int, int); // constructor
+  void print_all_books(); // function to print all the books in the warehouse
+  void transfer(Book_shop &, int, int);
+  // using book_shop class before it is defined..must use
+  // pointer/reference as compiler cant know size of an
+  // object. ints are unique barcode and amount to transfer
+};

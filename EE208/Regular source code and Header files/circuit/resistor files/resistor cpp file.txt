@@ -1,0 +1,53 @@
+#include "Resistor.h" // including the Resistor.h file
+
+//int Resistor::n=0;
+Resistor::Resistor(float r) // constructor
+{
+    R = new float;
+    *R = r;
+    n++; // count
+}
+void Resistor::set_values(float r) // public member function to set the value of the resistance
+{
+    *R = r;
+}
+Resistor::Resistor() // default constructor
+{
+    R = new float;
+    *R = 0;
+    n++; // count
+}
+float Resistor::calcCurrent(float V) // function to calculate the current
+{
+    float I = V / *R; // current  = voltage / resistance
+    return I;
+}
+float Resistor::calcVoltage(float I) // function to calculate the voltage
+{
+    float V = (I * (*R)); // voltage = current x resistance
+    return V;
+}
+float Resistor::calcPower(float I) // function to calculate the power
+{
+    float V = calcVoltage(I);
+    float P = I * V; // power = current / voltage
+    return P;
+}
+float Resistor::getResistance() // function to get the resistance
+{
+    return *R; // returns the resistance
+}
+int Resistor::getCount() // function to get the count
+{
+    return n; // returns the count
+}
+void series(Resistor A, Resistor B) // friend function
+{
+    float AB = A.getResistance() + B.getResistance();
+    cout << "\nThe Resistance of Resistors A2 and B2 combined is: " << AB << endl;
+}
+Resistor::~Resistor() // destructor function
+{
+    delete[] R;
+    n--; // count
+}

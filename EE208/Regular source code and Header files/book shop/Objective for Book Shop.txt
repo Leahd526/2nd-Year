@@ -1,0 +1,18 @@
+Eason’s hired someone else before you; they completed some
+work before they fell out with the Easons CTO and got themselves fired.
+You’ve inherited their code, which is placed on moodle for you to download.
+For the first exercise you need to download the various cpp and h files, create
+an empty project using your IDE, and add all of these files. Make sure it runs
+and then take some time to go through the code to make sure you understand
+the work of your predecessor. They were a little lazy with commenting so you
+should feel free to comment the code as you read through it and make sense of it.
+The reason your predecessor was fired was because of a difference of
+opinion with the CTO. The CTO believed that the book class should not
+contain a data member for the number of copies; the CTO believed that
+a book object should not be responsible for knowing how many copies of
+the book were in a shop. Remember from the lectures that a class should
+do one thing and do it well, and a book object should have the same
+properties as a physical book, which would not contain information about
+how many copies of it exist. Obviously the CTO was correct. The second
+thing you need to do is to edit the book class such that the data member
+num copies is moved into the book details class.
