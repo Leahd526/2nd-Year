@@ -6,3 +6,6 @@ To introduce C language programming in an embedded system environment (its key a
 
 EE297 - Intelligent Systems Project:                                                                                                    
 To promote project based learning in the field of embedded and intelligent devices. To instill the creative spirit in students. To develop oral and written communication skills. To develop students experience of working in a group. To engender an awareness of ethical issues in engineering.
+
+EE208 - Object Oriented Programming:
+To introduce C++ Programming (classes, inheritance, polyporphism), Object Oriented Design Principles (UML, class diagrams) and Design patterns.
